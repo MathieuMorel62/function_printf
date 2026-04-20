@@ -55,6 +55,17 @@ If the pointer is NULL,
 is printed instead.
 
 .TP
+.BR S
+The
+.B "char *"
+argument is treated like
+.B s
+except that non-printable bytes are written as a backslash, the letter
+.BR x ,
+then two uppercase hexadecimal digits for the byte value (for example newline, ASCII 10, is written as backslash, x, the digit zero, and capital A).
+Non-printable means: value strictly between 0 and 32, or value 127 or greater.
+
+.TP
 .B %
 A literal percent character is written. This conversion does not consume an argument.
 
@@ -124,6 +135,13 @@ Unsigned decimal, octal, and hexadecimal:
 .nf
 #include "main.h"
 _printf("u=%u o=%o x=%x X=%X\\n", 255u, 255u, 255u, 255u);
+.RE
+
+Custom string with escaped non-printables (\fB%S\fP):
+.RS
+.nf
+#include "main.h"
+_printf("%S\\n", "Best\\nSchool");
 .RE
 
 .SH AUTHOR
