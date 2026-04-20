@@ -26,7 +26,12 @@ int _printf(const char *format, ...)
 |[`_printf.c`](https://github.com/ali-jin/holbertonschool-printf/blob/main/_printf.c) | Contains main body of our code that uses loops and if statements in order to execute the functions |
 | [`get_function.c`](https://github.com/ali-jin/holbertonschool-printf/blob/main/get_function.c) | The get_function file is used to handle the array     containing all the format specifiers used.|
 | [`main.h`](https://github.com/ali-jin/holbertonschool-printf/blob/main/main.h) | The main.h contain all our the prototypes used as well as containing our struct and the standard libraries used. |
-| [`functions.c`](https://github.com/ali-jin/holbertonschool-printf/blob/main/functions.c) | It is in this file that we have placed all our functions (maximum 5 functions per file)|
+| [`io_putchar.c`](https://github.com/ali-jin/holbertonschool-printf/blob/main/io_putchar.c) | Contains `_putchar`, the low-level output helper based on `write` |
+| [`print_char_handler.c`](https://github.com/ali-jin/holbertonschool-printf/blob/main/print_char_handler.c) | Handler for `%c` |
+| [`print_string_handler.c`](https://github.com/ali-jin/holbertonschool-printf/blob/main/print_string_handler.c) | Handler for `%s` |
+| [`print_percent_handler.c`](https://github.com/ali-jin/holbertonschool-printf/blob/main/print_percent_handler.c) | Handler for `%%` |
+| [`print_int_handler.c`](https://github.com/ali-jin/holbertonschool-printf/blob/main/print_int_handler.c) | Handler for `%d` and `%i` |
+| [`functions_binary.c`](https://github.com/ali-jin/holbertonschool-printf/blob/main/functions_binary.c) | Handler for custom `%b` conversion |
 | [`man_3_printf.1`](https://github.com/ali-jin/holbertonschool-printf/blob/main/man_3_printf.1)| Man page for _printf function |
 
 ## Compilation
@@ -44,10 +49,10 @@ Here is a table whith the list of conversion specifiers, their meaning and an ex
 
 | Function Name | Description | Format | Example | Output |
 |:-------------:|:-----------:|:------:|:--------:|:------:|
-| [`print_char`](https://github.com/ali-jin/holbertonschool-printf/blob/main/functions.c)| Prints a single character | `%c` | _printf("%c", M) | `M` |
-| [`print_string`](https://github.com/ali-jin/holbertonschool-printf/blob/main/functions.c)| Prints a string of characters | `%s`| _printf("%s", HolbertonSchool) | `HolbertonSchool` |
-| [`print_pct`](https://github.com/ali-jin/holbertonschool-printf/blob/main/functions.c)| Prints a % | `%%` | _printf("%%") | `%` |
-| [`print_int`](https://github.com/ali-jin/holbertonschool-printf/blob/main/functions.c)| Prints decimal integer | `%d or %i`| _printf("%d", 21)| `21`|
+| [`print_char`](https://github.com/ali-jin/holbertonschool-printf/blob/main/print_char_handler.c)| Prints a single character | `%c` | _printf("%c", M) | `M` |
+| [`print_string`](https://github.com/ali-jin/holbertonschool-printf/blob/main/print_string_handler.c)| Prints a string of characters | `%s`| _printf("%s", HolbertonSchool) | `HolbertonSchool` |
+| [`print_pct`](https://github.com/ali-jin/holbertonschool-printf/blob/main/print_percent_handler.c)| Prints a % | `%%` | _printf("%%") | `%` |
+| [`print_int`](https://github.com/ali-jin/holbertonschool-printf/blob/main/print_int_handler.c)| Prints decimal integer | `%d or %i`| _printf("%d", 21)| `21`|
   
 ## Testing Program
 To test the program, you can create a `main.c` file and add the code below.
@@ -157,7 +162,7 @@ Write a function that produces output according to a format.
 - You don’t have to handle the length modifiers
 
 -----------------------------
-### [1. Education Is When You Read The Fine Print. Experience Is What You Get If You Don't](https://github.com/ali-jin/holbertonschool-printf/blob/main/functions.c)
+### [1. Education Is When You Read The Fine Print. Experience Is What You Get If You Don't](https://github.com/ali-jin/holbertonschool-printf/blob/main/print_int_handler.c)
 Handle the following conversion specifiers:
 
 - `d`
