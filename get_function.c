@@ -20,6 +20,7 @@ int (*get_function(const char *str))(va_list, print_buffer_t *)
 		{"o", print_octal},
 		{"x", print_hex_lower},
 		{"X", print_hex_upper},
+		{"S", print_string_custom_S},
 		{NULL, NULL}
 	};
 
