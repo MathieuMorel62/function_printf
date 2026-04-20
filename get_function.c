@@ -16,6 +16,10 @@ int (*get_function(const char *str))(va_list)
 		{"i", print_int},
 		{"d", print_int},
 		{"b", convert_binary},
+		{"u", print_unsigned},
+		{"o", print_octal},
+		{"x", print_hex_lower},
+		{"X", print_hex_upper},
 		{NULL, NULL}
 	};
 
@@ -27,4 +31,3 @@ int (*get_function(const char *str))(va_list)
 	}
 	return (NULL);
 }
-
