@@ -6,7 +6,7 @@
  * Return: null
  */
 
-int (*get_function(const char *str))(va_list)
+int (*get_function(const char *str))(va_list, print_buffer_t *)
 {
 	int i = 0;
 	print_type argument[] = {
