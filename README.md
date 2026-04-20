@@ -1,5 +1,5 @@
 # Holberton School - Printf Project
-  
+
 ![img](https://developers.redhat.com/sites/default/files/styles/share/public/ST-c_1x%20%282%29.png?itok=wFoDINrX)
 
 ## Description
@@ -26,7 +26,8 @@ int _printf(const char *format, ...)
 |[`_printf.c`](https://github.com/ali-jin/holbertonschool-printf/blob/main/_printf.c) | Contains main body of our code that uses loops and if statements in order to execute the functions |
 | [`get_function.c`](https://github.com/ali-jin/holbertonschool-printf/blob/main/get_function.c) | The get_function file is used to handle the array     containing all the format specifiers used.|
 | [`main.h`](https://github.com/ali-jin/holbertonschool-printf/blob/main/main.h) | The main.h contain all our the prototypes used as well as containing our struct and the standard libraries used. |
-| [`io_putchar.c`](https://github.com/ali-jin/holbertonschool-printf/blob/main/io_putchar.c) | Contains `_putchar`, the low-level output helper based on `write` |
+| [`io_putchar.c`](https://github.com/ali-jin/holbertonschool-printf/blob/main/io_putchar.c) | Contains `_putchar`, direct `write(1, …, 1)` helper (optional / tests) |
+| [`print_buffer.c`](https://github.com/ali-jin/holbertonschool-printf/blob/main/print_buffer.c) | Buffered output: `pb_putc` / `pb_flush` (buffer 1024 bytes, minimal `write` calls) |
 | [`print_char_handler.c`](https://github.com/ali-jin/holbertonschool-printf/blob/main/print_char_handler.c) | Handler for `%c` |
 | [`print_string_handler.c`](https://github.com/ali-jin/holbertonschool-printf/blob/main/print_string_handler.c) | Handler for `%s` |
 | [`print_percent_handler.c`](https://github.com/ali-jin/holbertonschool-printf/blob/main/print_percent_handler.c) | Handler for `%%` |
@@ -65,7 +66,7 @@ Here is a table whith the list of conversion specifiers, their meaning and an ex
 ## Testing Program
 To test the program, you can create a `main.c` file and add the code below.
 ```c
-    alex@ubuntu:~/c/printf$ cat main.c 
+    alex@ubuntu:~/c/printf$ cat main.c
     #include <limits.h>
     #include <stdio.h>
     #include "main.h"
@@ -111,7 +112,7 @@ To test the program, you can create a `main.c` file and add the code below.
         return (0);
     }
  ```
- 
+
 ## Output The Program
 
 At the exit, the program must display this.
@@ -151,7 +152,7 @@ At the exit, the program must display this.
 ![Flowchart](https://github.com/ali-jin/holbertonschool-printf/blob/main/Diagramme%20sans%20nom.drawio.svg)
 
 -------------------------
-## Task To Realize The Project 
+## Task To Realize The Project
 
 ### [0. I'm Not Going Anywhere. You Can Print That Wherever You Want To. I'm Here And I'm a Spur For Life](https://github.com/ali-jin/holbertonschool-printf)
 Write a function that produces output according to a format.
