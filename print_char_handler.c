@@ -3,11 +3,16 @@
 /**
  * print_char - print a single character
  * @ap: argument list
+ * @pb: output buffer
  *
- * Return: number of characters printed
+ * Return: number of characters printed, or -1 on error
  */
-int print_char(va_list ap)
+int print_char(va_list ap, print_buffer_t *pb)
 {
-	_putchar(va_arg(ap, int));
+	char ch;
+
+	ch = (char)va_arg(ap, int);
+	if (pb_putc(pb, ch) < 0)
+		return (-1);
 	return (1);
 }
