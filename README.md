@@ -31,7 +31,8 @@ int _printf(const char *format, ...)
 | [`print_string_handler.c`](https://github.com/ali-jin/holbertonschool-printf/blob/main/print_string_handler.c) | Handler for `%s` |
 | [`print_percent_handler.c`](https://github.com/ali-jin/holbertonschool-printf/blob/main/print_percent_handler.c) | Handler for `%%` |
 | [`print_int_handler.c`](https://github.com/ali-jin/holbertonschool-printf/blob/main/print_int_handler.c) | Handler for `%d` and `%i` |
-| [`functions_binary.c`](https://github.com/ali-jin/holbertonschool-printf/blob/main/functions_binary.c) | Handler for custom `%b` conversion |
+| [`functions_binary.c`](https://github.com/ali-jin/holbertonschool-printf/blob/main/functions_binary.c) | Handler for custom `%b` conversion (binary) |
+| [`print_unsigned_bases_handler.c`](https://github.com/ali-jin/holbertonschool-printf/blob/main/print_unsigned_bases_handler.c) | Handlers for `%u`, `%o`, `%x`, and `%X` (unsigned decimal, octal, hexadecimal) |
 | [`man_3_printf.1`](https://github.com/ali-jin/holbertonschool-printf/blob/main/man_3_printf.1)| Man page for _printf function |
 
 ## Compilation
@@ -53,7 +54,14 @@ Here is a table whith the list of conversion specifiers, their meaning and an ex
 | [`print_string`](https://github.com/ali-jin/holbertonschool-printf/blob/main/print_string_handler.c)| Prints a string of characters | `%s`| _printf("%s", HolbertonSchool) | `HolbertonSchool` |
 | [`print_pct`](https://github.com/ali-jin/holbertonschool-printf/blob/main/print_percent_handler.c)| Prints a % | `%%` | _printf("%%") | `%` |
 | [`print_int`](https://github.com/ali-jin/holbertonschool-printf/blob/main/print_int_handler.c)| Prints decimal integer | `%d or %i`| _printf("%d", 21)| `21`|
-  
+| [`convert_binary`](https://github.com/ali-jin/holbertonschool-printf/blob/main/functions_binary.c)| Prints unsigned integer in binary | `%b` | _printf("%b", 5) | `101` |
+| [`print_unsigned`](https://github.com/ali-jin/holbertonschool-printf/blob/main/print_unsigned_bases_handler.c)| Prints unsigned decimal | `%u` | _printf("%u", 42) | `42` |
+| [`print_octal`](https://github.com/ali-jin/holbertonschool-printf/blob/main/print_unsigned_bases_handler.c)| Prints unsigned octal | `%o` | _printf("%o", 8) | `10` |
+| [`print_hex_lower`](https://github.com/ali-jin/holbertonschool-printf/blob/main/print_unsigned_bases_handler.c)| Prints unsigned hex (lowercase) | `%x` | _printf("%x", 255) | `ff` |
+| [`print_hex_upper`](https://github.com/ali-jin/holbertonschool-printf/blob/main/print_unsigned_bases_handler.c)| Prints unsigned hex (uppercase) | `%X` | _printf("%X", 255) | `FF` |
+
+**Note:** `_printf` supports the specifiers above. The sample `main.c` below also calls `printf` with `%p` and `%r`; those conversions are **not** implemented in this `_printf` (output may differ from `printf` for those lines).
+
 ## Testing Program
 To test the program, you can create a `main.c` file and add the code below.
 ```c
@@ -181,6 +189,20 @@ Handle the following conversion specifiers:
 Handle the following custom conversion specifiers:
 
 - `b` : the unsigned int argument is converted to binary
+
+----------------------------
+### [4. What One Has Not Experienced, One Will Never Understand In Print](https://github.com/ali-jin/holbertonschool-printf)
+Handle the following conversion specifiers:
+
+- `u` (unsigned decimal)
+- `o` (unsigned octal)
+- `x` (unsigned hexadecimal, lowercase)
+- `X` (unsigned hexadecimal, uppercase)
+
+- You don’t have to handle the flag characters
+- You don’t have to handle field width
+- You don’t have to handle precision
+- You don’t have to handle the length modifiers
 
 ----------------------------
 
