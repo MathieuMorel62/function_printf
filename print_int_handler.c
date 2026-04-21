@@ -32,9 +32,9 @@ static int write_positive_int_sign(print_buffer_t *pb)
  *
  * Return: number of characters printed, or -1 on error
  */
-static int write_unsigned_decimal(print_buffer_t *pb, unsigned int magnitude)
+static int write_unsigned_decimal(print_buffer_t *pb, unsigned long magnitude)
 {
-	int divisor;
+	unsigned long divisor;
 	int char_to_print;
 	int count;
 
@@ -55,6 +55,28 @@ static int write_unsigned_decimal(print_buffer_t *pb, unsigned int magnitude)
 }
 
 /**
+ * read_signed_value_from_args - read signed value with optional h/l modifier
+ * @ap: argument list
+ * @pb: formatting state
+ *
+ * Return: signed value converted according to length modifier
+ */
+static long read_signed_value_from_args(va_list ap, print_buffer_t *pb)
+{
+	long value;
+
+	if (pb->length_modifier == 'l')
+		value = va_arg(ap, long);
+	else
+	{
+		value = (long)va_arg(ap, int);
+		if (pb->length_modifier == 'h')
+			value = (long)((short)value);
+	}
+	return (value);
+}
+
+/**
  * print_int - print a signed integer in decimal
  * @ap: argument list
  * @pb: output buffer
@@ -63,19 +85,19 @@ static int write_unsigned_decimal(print_buffer_t *pb, unsigned int magnitude)
  */
 int print_int(va_list ap, print_buffer_t *pb)
 {
-	int value;
-	unsigned int magnitude;
+	long value;
+	unsigned long magnitude;
 	int count;
 	int result;
 
-	value = va_arg(ap, int);
+	value = read_signed_value_from_args(ap, pb);
 	count = 0;
 	if (value < 0)
 	{
 		if (pb_putc(pb, '-') < 0)
 			return (-1);
 		count = count + 1;
-		magnitude = (unsigned int)(-(long)value);
+		magnitude = (unsigned long)(-value);
 	}
 	else
 	{
@@ -83,7 +105,7 @@ int print_int(va_list ap, print_buffer_t *pb)
 		if (result < 0)
 			return (-1);
 		count = count + result;
-		magnitude = (unsigned int)value;
+		magnitude = (unsigned long)value;
 	}
 	result = write_unsigned_decimal(pb, magnitude);
 	if (result < 0)
