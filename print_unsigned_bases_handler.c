@@ -52,13 +52,15 @@ int print_unsigned(va_list ap, print_buffer_t *pb)
 int print_octal(va_list ap, print_buffer_t *pb)
 {
 	unsigned int n;
+	unsigned int original_value;
 	char buf[32];
-	int i;
-	int len;
+	int size;
+	int len_digits;
+	int len_prefix;
 
 	n = va_arg(ap, unsigned int);
-	i = 0;
-	len = 0;
+	original_value = n;
+	size = 0;
 
 	if (n == 0)
 	{
@@ -69,20 +71,21 @@ int print_octal(va_list ap, print_buffer_t *pb)
 
 	while (n != 0)
 	{
-		buf[i] = (char)((n % 8) + '0');
+		buf[size] = (char)((n % 8) + '0');
 		n = n / 8;
-		i = i + 1;
+		size = size + 1;
 	}
-
-	while (i > 0)
+	len_prefix = 0;
+	if (pb->flag_hash == 1 && original_value != 0)
 	{
-		i = i - 1;
-		if (pb_putc(pb, buf[i]) < 0)
+		if (pb_putc(pb, '0') < 0)
 			return (-1);
-		len = len + 1;
+		len_prefix = 1;
 	}
-
-	return (len);
+	len_digits = write_reversed_buffer(pb, buf, size);
+	if (len_digits < 0)
+		return (-1);
+	return (len_prefix + len_digits);
 }
 
 /**
@@ -96,13 +99,15 @@ int print_octal(va_list ap, print_buffer_t *pb)
 static int print_hex(va_list ap, const char *digits, print_buffer_t *pb)
 {
 	unsigned int n;
+	unsigned int original_value;
 	char buf[16];
-	int i;
-	int len;
+	int size;
+	int len_digits;
+	int len_prefix;
 
 	n = va_arg(ap, unsigned int);
-	i = 0;
-	len = 0;
+	original_value = n;
+	size = 0;
 
 	if (n == 0)
 	{
@@ -113,20 +118,17 @@ static int print_hex(va_list ap, const char *digits, print_buffer_t *pb)
 
 	while (n != 0)
 	{
-		buf[i] = digits[n % 16];
+		buf[size] = digits[n % 16];
 		n = n / 16;
-		i = i + 1;
+		size = size + 1;
 	}
-
-	while (i > 0)
-	{
-		i = i - 1;
-		if (pb_putc(pb, buf[i]) < 0)
-			return (-1);
-		len = len + 1;
-	}
-
-	return (len);
+	len_prefix = write_hex_prefix_if_needed(pb, original_value);
+	if (len_prefix < 0)
+		return (-1);
+	len_digits = write_reversed_buffer(pb, buf, size);
+	if (len_digits < 0)
+		return (-1);
+	return (len_prefix + len_digits);
 }
 
 /**
