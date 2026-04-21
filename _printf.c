@@ -11,6 +11,7 @@ static void reset_format_flags(print_buffer_t *pb)
 	pb->flag_plus = 0;
 	pb->flag_space = 0;
 	pb->flag_hash = 0;
+	pb->length_modifier = '\0';
 	pb->conversion_specifier = '\0';
 }
 
@@ -38,7 +39,6 @@ static int parse_flags(const char *format, int *pi, print_buffer_t *pb)
 		return (-2);
 	return (0);
 }
-
 /**
  * apply_specifier - handle one '%' conversion
  * @format: format string
@@ -61,6 +61,13 @@ static int apply_specifier(const char *format, int *pi, int *plen,
 	len = *plen;
 	reset_format_flags(pb);
 	if (parse_flags(format, &i, pb) < 0)
+		return (-2);
+	if (format[i] == 'h' || format[i] == 'l')
+	{
+		pb->length_modifier = format[i];
+		i = i + 1;
+	}
+	if (format[i] == '\0')
 		return (-2);
 	pb->conversion_specifier = format[i];
 	func = get_function(format + i);
