@@ -11,9 +11,15 @@ The function writes output to stdout, the standard output stream, under the cont
 
 This implementation supports the conversion specifiers listed in
 .BR "SUPPORTED CONVERSIONS" .
-Field width, precision, and length modifiers are
+Field width and precision are
 .B not
-supported. The flag characters
+supported. The length modifiers
+.B h
+and
+.B l
+are supported for
+.BR d ", " i ", " u ", " o ", " x ", and " X .
+The flag characters
 .BR + ", " space ", and " #
 are partially supported for non-custom conversions in this project:
 .BR + " and " space
@@ -44,6 +50,14 @@ without consuming an argument).
 The
 .B int
 argument is converted to signed decimal notation.
+Length modifier
+.B h
+uses
+.B short
+and length modifier
+.B l
+uses
+.BR long .
 For non-negative values, flag
 .B +
 prints a leading plus sign and flag
@@ -96,12 +110,28 @@ argument is converted to binary (base 2).
 The
 .B "unsigned int"
 argument is converted to unsigned decimal notation.
+Length modifier
+.B h
+uses
+.B "unsigned short"
+and length modifier
+.B l
+uses
+.BR "unsigned long" .
 
 .TP
 .BR o
 The
 .B "unsigned int"
 argument is converted to unsigned octal notation.
+Length modifier
+.B h
+uses
+.B "unsigned short"
+and length modifier
+.B l
+uses
+.BR "unsigned long" .
 With flag
 .BR # ,
 a leading
@@ -114,6 +144,14 @@ The
 .B "unsigned int"
 argument is converted to unsigned hexadecimal notation using lowercase letters
 .B abcdef .
+Length modifier
+.B h
+uses
+.B "unsigned short"
+and length modifier
+.B l
+uses
+.BR "unsigned long" .
 With flag
 .BR # ,
 prefix
@@ -126,6 +164,14 @@ The
 .B "unsigned int"
 argument is converted to unsigned hexadecimal notation using uppercase letters
 .BR ABCDEF .
+Length modifier
+.B h
+uses
+.B "unsigned short"
+and length modifier
+.B l
+uses
+.BR "unsigned long" .
 With flag
 .BR # ,
 prefix
