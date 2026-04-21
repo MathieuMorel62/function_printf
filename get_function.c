@@ -21,6 +21,7 @@ int (*get_function(const char *str))(va_list, print_buffer_t *)
 		{"x", print_hex_lower},
 		{"X", print_hex_upper},
 		{"S", print_string_custom_S},
+		{"p", print_pointer},
 		{NULL, NULL}
 	};
 
