@@ -286,6 +286,22 @@ Current behavior in this project:
 - `#` is handled for `%o`, `%x`, and `%X`
 
 ----------------------------
+### [9. Sarcasm Is Lost In Print](https://github.com/MathieuMorel62/holbertonschool-printf/tree/main)
+Handle the following length modifiers for non-custom conversion specifiers:
+
+- `l`
+- `h`
+
+Conversion specifiers handled with these modifiers:
+
+- `%d`, `%i`, `%u`, `%o`, `%x`, `%X`
+
+Current behavior in this project:
+
+- `%ld`, `%li`, `%lu`, `%lo`, `%lx`, `%lX`
+- `%hd`, `%hi`, `%hu`, `%ho`, `%hx`, `%hX`
+
+----------------------------
 
 # Authors
 
